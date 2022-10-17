@@ -28,6 +28,7 @@ class BuildingMaterial extends MeshStandardMaterial
                 varying vec2 vUv;
                 varying vec3 lNormal;
                 varying vec3 vSizing;
+                varying vec2 vOffset;
           `
 
             );
@@ -39,6 +40,7 @@ class BuildingMaterial extends MeshStandardMaterial
                 gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
                 lNormal = normal;
                 vSizing = sizing;
+                vOffset = roffset;
           `
             );
 
@@ -50,6 +52,7 @@ class BuildingMaterial extends MeshStandardMaterial
                 varying vec2 vUv;
                 varying vec3 lNormal;
                 varying vec3 vSizing;
+                varying vec2 vOffset;
 
                 float hash21B(vec2 x){ 
                     vec2 p = floor(x);
@@ -142,7 +145,7 @@ class BuildingMaterial extends MeshStandardMaterial
                 float w = 1.0 - step( 0.0, sdBox( windowSt, vec2( 0.4)) );
                 float border = step( 0.5, cubicPulse(0.0, 0.01, sdBox( windowSt, vec2( 0.4)) ) ) * windowsZone;
 
-                vec2 floorModUv = floor(modUv);
+                vec2 floorModUv = floor(modUv + vOffset * 10.0);
                 float fc = hash21B(floorModUv);
 
                 vec2 stripesUvs = windowSt;
