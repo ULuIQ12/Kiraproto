@@ -12,3 +12,36 @@ Everything concerning shadows is tagged "!SHADOW!" in the code for easy lookup
  - Seeded random texture generation to feed shaders
 
 Based on the official fxhash webpack boilerplate project https://github.com/fxhash/fxhash-webpack-boilerplate
+
+# How to use
+
+You will need to have [nodejs](https://nodejs.org/) installed.
+
+## Installation
+
+> First, make sure that your node version is >= 14
+
+Clone the repository on your machine and move to the directory
+```sh
+$ git clone https://github.com/ULuIQ12/Kiraproto.git your_folder && cd your_folder
+```
+
+Install the packages required for the local environment
+```sh
+$ npm i
+```
+
+## Start local environment
+
+```sh
+$ npm start
+```
+
+This last command will start a local http server with [live reloading](https://webpack.js.org/configuration/dev-server/#devserverlivereload) enabled so that you can iterate faster on your projects. Open [http://localhost:8080](http://localhost:8080) to see your project in the browser.
+
+## Build
+
+```sh
+$ npm run build
+```
+
