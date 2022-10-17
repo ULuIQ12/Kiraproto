@@ -1,0 +1,27 @@
+{
+  "name": "Kira proto",
+  "version": "1.0.0",
+  "description": "threejs implementation of Kira's proto to demonstrate soft shadows - based on the fxhash webpack boilerplate project",
+  "main": "index.js",
+  "author": "ulu",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config ./config/webpack.config.prod.js",
+    "start": "webpack serve --config ./config/webpack.config.dev.js"
+  },
+  "dependencies": {
+    "@liamegan1/fxhash-helpers": "^0.1.1",
+    "three": "^0.142.0",
+    "ts-loader": "^9.3.1"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.9",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.59.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  }
+}
