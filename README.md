@@ -1,4 +1,6 @@
 # Kira0 Proto
+![alt text](https://www.ulucode.com/fanart/kiraproto/kiraGitHeader.jpg)
+
 Three.js take on Kira0 (https://twitter.com/kira0art) WIP to demonstrate soft shadows
 
 The question was whether or not taking the project in 3D for shadows was worthwhile.
