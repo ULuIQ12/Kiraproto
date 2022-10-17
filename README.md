@@ -1,5 +1,5 @@
-# Kira Proto
-Three.js take on @kira0art's WIP to demonstrate soft shadows
+# Kira0 Proto
+Three.js take on Kira0 (https://twitter.com/kira0art) WIP to demonstrate soft shadows
 
 The question was whether or not taking the project in 3D for shadows was worthwhile.
 I'd say it depend for the shadows. But I think it's extremely worthwhile for the rest : easy lighting, composition, realtime rendering, etc.
