@@ -1,6 +1,4 @@
 import { Color, MeshStandardMaterial } from "three";
-import { RandTexGen } from "../utils/RandTexGen";
-
 
 class RoadMaterial extends MeshStandardMaterial
 {
@@ -52,6 +50,7 @@ class RoadMaterial extends MeshStandardMaterial
                 uniform float type;
                 uniform vec3 dashTint;            
 
+                // return a box signed distance field - https://iquilezles.org/articles/distfunctions2d/
                 float sdBox( in vec2 p, in vec2 b )
                 {
                     vec2 d = abs(p)-b;
@@ -65,22 +64,25 @@ class RoadMaterial extends MeshStandardMaterial
                 "#include <color_fragment>",
                 `#include <color_fragment>
 
-                vec2 tileUV = mod(vPositionW.xz, 1.0 );
+                // calculating horizontal dashes
+                vec2 tileUV = mod(vPositionW.xz, 1.0 ); // using world positions for tiling
                 vec2 horST = tileUV;
-                horST.x *= 4.0;
+                horST.x *= 4.0; // number of dashes
                 horST = mod( horST , 1.0 ) * 2.0 - 1.0;
-                float horb = sdBox( horST, vec2(0.5, 0.02));
-                horb = 1.0 - step( 0.0, horb);
-                horb = (type==2.0)?horb:0.0;
+                float horb = sdBox( horST, vec2(0.5, 0.02)); // getting dashes
+                horb = 1.0 - step( 0.0, horb); // only the inside
+                horb = (type==2.0)?horb:0.0; // does it match the type uniform ?
 
+                // same for the verticals
                 vec2 verST = tileUV;
-                verST.y *= 4.0;
+                verST.y *= 4.0; // number of dashes
                 verST = mod( verST , 1.0 ) * 2.0 - 1.0;
                 float verb = sdBox( verST, vec2(0.02, 0.5));
                 verb = 1.0 - step( 0.0, verb);
                 verb = (type==1.0)?verb:0.0;
                 float totalDash = verb + horb;
 
+                // mixing the two
                 diffuseColor.rgb = mix(diffuseColor.rgb, dashTint, totalDash);
 
           `
